@@ -80,6 +80,30 @@ if(marqueeTrack){
 }
 updateTrajectoryState();
 
+const contactEmail='cesarsollagonzalez@gmail.com';
+const contactToast=$('#contact-toast');
+let contactToastTimer;
+function legacyCopyEmail(){
+  const fallback=document.createElement('textarea');
+  fallback.value=contactEmail;
+  fallback.setAttribute('readonly','');
+  fallback.style.position='fixed';
+  fallback.style.opacity='0';
+  document.body.append(fallback);
+  fallback.select();
+  document.execCommand('copy');
+  fallback.remove();
+}
+function copyContactEmail(event){
+  event.preventDefault();
+  if(navigator.clipboard?.writeText)navigator.clipboard.writeText(contactEmail).catch(legacyCopyEmail);
+  else legacyCopyEmail();
+  contactToast.classList.add('visible');
+  clearTimeout(contactToastTimer);
+  contactToastTimer=setTimeout(()=>contactToast.classList.remove('visible'),2600);
+}
+$$('[data-copy-email]').forEach(link=>link.addEventListener('click',copyContactEmail));
+
 const capabilityContext={
   'PM.01':'Budgeting, cost control and business-case development used in Airbus aerospace projects to connect scope, resources and financial impact.',
   'PM.02':'Risk identification, assessment, mitigation and senior communication applied across R&D, testing, obsolescence and strategic Airbus initiatives.',

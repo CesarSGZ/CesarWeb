@@ -12,8 +12,8 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="mobile.css">
   <link rel="stylesheet" href="enhancements.css">
-  <link rel="stylesheet" href="trajectory.css">
-  <link rel="stylesheet" href="polish.css">
+  <link rel="stylesheet" href="trajectory.css?v=20260713e">
+  <link rel="stylesheet" href="polish.css?v=20260713e">
 </head>
 <body>
   <canvas id="stars" aria-hidden="true"></canvas>
@@ -25,7 +25,7 @@
     <nav aria-label="Primary navigation">
       <a href="#trajectory">Trajectory</a><a href="#systems">Capabilities</a><a href="#credentials">Credentials</a>
     </nav>
-    <a class="nav-cta" href="mailto:cesarsollagonzalez@gmail.com">Start a conversation <span>↗</span></a>
+    <a class="nav-cta" href="mailto:cesarsollagonzalez@gmail.com" data-copy-email>Contact <span>↗</span></a>
   </header>
 
   <main id="top">
@@ -38,7 +38,7 @@
         <div class="hero-actions"><a class="button primary" href="#trajectory">Explore the mission <span>↓</span></a><a class="button ghost" href="https://www.linkedin.com/in/cesarsgz/" target="_blank" rel="noreferrer">LinkedIn ↗</a></div>
       </div>
       <div class="identity reveal" data-delay="1">
-        <div class="portrait-shell"><div class="portrait-ring"></div><img src="assets/cesar-hq.png" alt="Portrait of César Solla González"><span class="coordinate c1">40.4168° N</span><span class="coordinate c2">03.7038° W</span></div>
+        <div class="portrait-stage"><div class="portrait-shell"><div class="portrait-ring"></div><img src="assets/cesar-hq.png" alt="Portrait of César Solla González"></div><span class="coordinate c1">40.4168° N</span><span class="coordinate c2">03.7038° W</span></div>
         <div class="id-card"><span>MISSION SPECIALIST</span><strong>César Solla González</strong><small>Aerospace & Aeronautical Engineer</small></div>
       </div>
       <div class="scroll-hint"><span></span>SCROLL TO LAUNCH</div>
@@ -143,10 +143,11 @@
       <p class="eyebrow reveal">06 / One last thing</p>
       <h2 class="reveal">And yes, obviously…<br><em>I can use AI too.</em></h2>
       <p class="vibe reveal">This website was <span>vibe coded</span> — curiosity, judgement and a human at the controls included.</p>
-      <div class="final-actions reveal"><a class="button primary" href="mailto:cesarsollagonzalez@gmail.com">Let's build something complex <span>↗</span></a><a class="button ghost" href="tel:+34619708319">+34 619 70 83 19</a></div>
+      <div class="final-actions reveal"><a class="button primary" href="mailto:cesarsollagonzalez@gmail.com" data-copy-email>Let's build something complex <span>↗</span></a></div>
       <footer><span>© 2026 César Solla González</span><span>ENGINEERED WITH INTENT · AUGMENTED WITH AI</span><a href="#top">Back to orbit ↑</a></footer>
     </section>
   </main>
-  <script src="script.js"></script>
+  <div class="contact-toast" id="contact-toast" role="status" aria-live="polite">Email copied to clipboard</div>
+  <script src="script.js?v=20260713e"></script>
 </body>
 </html>

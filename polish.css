@@ -1,6 +1,18 @@
 .portrait-shell { overflow: hidden; }
 .portrait-shell img { transform: scale(1.09); transform-origin: 50% 42%; object-position: center 42%; }
 .portrait-ring,.coordinate { z-index: 4; }
+.portrait-stage { position: relative; }
+.portrait-stage .coordinate { white-space: nowrap; }
+
+.contact-toast { position: fixed; z-index: 40; right: 24px; bottom: 24px; padding: 15px 18px; border: 1px solid rgba(82,217,255,.45); background: rgba(7,16,21,.96); color: var(--ink); box-shadow: 0 18px 55px rgba(0,0,0,.35); font: 10px DM Mono; letter-spacing: .08em; text-transform: uppercase; opacity: 0; transform: translateY(16px); pointer-events: none; transition: opacity .25s ease, transform .25s ease; }
+.contact-toast::before { content: ""; display: inline-block; width: 7px; height: 7px; margin-right: 10px; border-radius: 50%; background: var(--acid); box-shadow: 0 0 12px var(--acid); }
+.contact-toast.visible { opacity: 1; transform: translateY(0); }
+
+@media(max-width:900px){
+  .nav-cta { font-size: 10px; }
+  .nav-cta span { font-size: 11px; }
+  .contact-toast { left: 16px; right: 16px; bottom: 16px; text-align: center; }
+}
 
 .belief-statement { margin: -40px 0 80px; padding: 25px 0 25px 34px; border-left: 3px solid #3c604f; display: grid; grid-template-columns: 210px 1fr; gap: 40px; align-items: start; }
 .belief-statement span { font: 10px DM Mono; letter-spacing: .16em; color: #3c604f; }

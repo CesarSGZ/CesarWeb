@@ -15,7 +15,7 @@
 .log-entry.active .log-content::before { width: 4px; opacity: 1; box-shadow: 0 0 18px var(--company-color); }
 
 /* Full-bleed, seamless capability index. The duplicated spans are generated from the page content. */
-.tool-marquee .tool-marquee-track { display: flex; width: max-content; will-change: transform; animation: marquee 70s linear infinite; }
+.tool-marquee .tool-marquee-track { display: flex; width: max-content; will-change: transform; animation: marquee 150s linear infinite; }
 .tool-marquee .tool-marquee-track span { flex: none; padding-right: 32px; }
 .tool-marquee:hover .tool-marquee-track { animation-play-state: paused; }
 
