@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="mobile.css">
   <link rel="stylesheet" href="enhancements.css">
   <link rel="stylesheet" href="trajectory.css?v=20260713e">
-  <link rel="stylesheet" href="polish.css?v=20260713e">
+  <link rel="stylesheet" href="polish.css?v=20260713f">
 </head>
 <body>
   <canvas id="stars" aria-hidden="true"></canvas>
@@ -48,10 +48,10 @@
       <p class="eyebrow">01 / Mission profile</p>
       <div class="manifest-grid"><h2>Three disciplines.<br><span>One operating system.</span></h2><p>Highly autonomous, comfortable with ambiguity and trusted across cross-functional teams. I translate technical depth into decisions, plans and measurable delivery.</p></div>
       <blockquote class="belief-statement"><span>LEADERSHIP / WITHOUT A TITLE</span><p>“Leadership can come from any position. I am passionate about engineering and the technical world — but the best systems are still built by people who understand people.”</p></blockquote>
-      <div class="pillars">
-        <article><span>01</span><div class="icon">⌁</div><h3>Programme<br>Management</h3><p>From offer to execution: budget, risk, stakeholders, suppliers, contracts and R&D.</p><i>ORCHESTRATE</i></article>
-        <article><span>02</span><div class="icon">⌬</div><h3>Systems<br>Engineering</h3><p>Requirements, certification, V&V, testing and design reviews for complex aerospace systems.</p><i>ENGINEER</i></article>
-        <article><span>03</span><div class="icon">◫</div><h3>Business<br>Intelligence</h3><p>SAP, analytics, automation and decision-ready reporting for procurement and supply chain.</p><i>ILLUMINATE</i></article>
+      <div class="pillars" id="disciplines">
+        <article class="discipline-programme"><span>01</span><div class="icon">⌁</div><h3>Programme<br>Management</h3><p>From offer to execution: budget, risk, stakeholders, suppliers, contracts and R&D.</p><i>ORCHESTRATE</i></article>
+        <article class="discipline-engineering"><span>02</span><div class="icon">⌬</div><h3>Systems<br>Engineering</h3><p>Requirements, certification, V&V, testing and design reviews for complex aerospace systems.</p><i>ENGINEER</i></article>
+        <article class="discipline-data"><span>03</span><div class="icon">◫</div><h3>Business<br>Intelligence</h3><p>SAP, analytics, automation and decision-ready reporting for procurement and supply chain.</p><i>ILLUMINATE</i></article>
       </div>
     </section>
 
@@ -126,10 +126,10 @@
     <section class="credentials section" id="credentials">
       <div class="section-head reveal"><p class="eyebrow">04 / Credentials</p><h2>Built on engineering.<br><em>Certified to lead.</em></h2></div>
       <div class="credential-grid">
-        <article class="credential reveal"><div class="credential-no">PMP</div><div><span>2026 · PMI</span><h3>Project Management Professional</h3><p>Project Management Institute</p></div></article>
-        <article class="credential reveal"><div class="credential-no">MSc</div><div><span>2023 — 2025</span><h3>Aeronautical Engineering</h3><p>European University of Madrid</p></div></article>
-        <article class="credential reveal"><div class="credential-no">BSc</div><div><span>2017 — 2021</span><h3>Aerospace Engineering</h3><p>Technical University of Madrid</p></div></article>
-        <article class="credential reveal"><div class="credential-no">SF</div><div><span>2022</span><h3>Salesforce Administrator</h3><p>Certified administrator & functional developer</p></div></article>
+        <article class="credential discipline-programme reveal"><div class="credential-no">PMP</div><div><span>2026 · PMI</span><h3>Project Management Professional</h3><p>Project Management Institute</p><span class="credential-category">Programme Management</span></div></article>
+        <article class="credential discipline-engineering reveal"><div class="credential-no">MSc</div><div><span>2023 — 2025</span><h3>Aeronautical Engineering</h3><p>European University of Madrid</p><span class="credential-category">Engineering</span></div></article>
+        <article class="credential discipline-engineering reveal"><div class="credential-no">BSc</div><div><span>2017 — 2021</span><h3>Aerospace Engineering</h3><p>Technical University of Madrid</p><span class="credential-category">Engineering</span></div></article>
+        <article class="credential discipline-data reveal"><div class="credential-no">SF</div><div><span>2022</span><h3>Salesforce Administrator</h3><p>Certified administrator & functional developer</p><span class="credential-category">Data & Tools</span></div></article>
       </div>
     </section>
 
