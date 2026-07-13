@@ -1,13 +1,16 @@
-.log-entry { --company-color: #071015; --company-soft: rgba(7,16,21,.08); padding-bottom: 72px; opacity: .76; }
+.trajectory { background: #e4f4b5; }
+.trajectory .log-entry::before { background: #e4f4b5; }
+.log-entry { --company-color: #071015; --company-soft: rgba(7,16,21,.08); grid-template-columns: 245px minmax(0,1fr); gap: 4vw; padding-bottom: 72px; opacity: .76; }
 .log-entry.company-airbus { --company-color: #0066b3; --company-soft: rgba(0,102,179,.10); }
 .log-entry.company-deloitte { --company-color: #477d13; --company-soft: rgba(71,125,19,.11); }
 .log-entry.company-ey { --company-color: #8a6900; --company-soft: rgba(138,105,0,.11); }
 .log-entry::before { border-color: var(--company-color); color: var(--company-color); font-weight: 700; }
 .log-entry .log-meta span { color: var(--company-color); font-weight: 700; }
-.log-entry .log-meta span { font-size: 9px; white-space: nowrap; }
+.log-entry .log-meta span { font-size: 11.5px; line-height: 1.45; white-space: nowrap; }
+.log-entry .log-meta small { margin-top: 8px; font-size: 10.5px; line-height: 1.5; letter-spacing: .055em; }
 .log-content { position: relative; padding-left: 27px; }
 .log-content::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 2px; border-radius: 99px; background: var(--company-color); opacity: .48; transform-origin: center; transition: width .3s ease, opacity .3s ease, box-shadow .3s ease; }
-.log-content h3 { margin-top: 0; margin-bottom: 18px; line-height: 1.03; color: var(--company-color); }
+.log-content h3 { margin-top: 0; margin-bottom: 18px; font-size: clamp(32px,3.25vw,50px); line-height: 1.04; color: var(--company-color); }
 .log-content > p { margin-bottom: 20px; }
 .log-content ul { margin-top: 0; margin-bottom: 0; }
 .log-content li { border-color: var(--company-color); background: var(--company-soft); }
@@ -20,8 +23,12 @@
 .tool-marquee:hover .tool-marquee-track { animation-play-state: paused; }
 
 @media (max-width: 700px) {
-  .log-entry { padding-bottom: 55px; }
+  .log-entry { grid-template-columns: 1fr; padding-bottom: 55px; }
   .log-content { padding-left: 18px; }
   .log-content h3 { margin-bottom: 14px; }
   .log-content li { font-size: 9px; padding: 7px 9px; }
+}
+
+@media (min-width: 701px) and (max-width: 900px) {
+  .log-entry { grid-template-columns: 1fr; }
 }

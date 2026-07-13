@@ -14,6 +14,13 @@ function updateTrajectoryState(){
   const log=$('.flight-log'),line=$('.timeline-line span'),entries=$$('.log-entry');
   if(!log)return;
   const r=log.getBoundingClientRect(),focus=innerHeight*.44,p=Math.max(0,Math.min(1,(focus-r.top)/r.height));
+  const timeline=$('.timeline-line'),deloitte=$('.company-deloitte'),ey=$('.company-ey'),timelineHeight=timeline?.offsetHeight||r.height;
+  if(timeline&&timelineHeight&&deloitte&&ey){
+    const deloitteStop=Math.max(0,Math.min(100,deloitte.offsetTop/timelineHeight*100));
+    const eyStop=Math.max(deloitteStop,Math.min(100,ey.offsetTop/timelineHeight*100));
+    line.style.background=`linear-gradient(to bottom,#0066b3 0 ${deloitteStop}%,#477d13 ${deloitteStop}% ${eyStop}%,#8a6900 ${eyStop}% 100%)`;
+    line.style.backgroundSize=`100% ${timelineHeight}px`;
+  }
   line.style.height=(p*100)+'%';
   let nearest=null,distance=Infinity;
   entries.forEach(entry=>{const box=entry.getBoundingClientRect(),d=Math.abs(box.top+Math.min(box.height*.38,180)-focus);if(d<distance){distance=d;nearest=entry}});
@@ -40,11 +47,11 @@ $$('.cap-node').forEach(node=>node.addEventListener('click',()=>{
 
 // Keep company tenure and role progression readable without inventing hidden LinkedIn dates.
 const tenureLabels=[
-  ['APR 2024 — PRESENT · 2 YRS 4 MOS','AIRBUS · ROLE 03/03 · GETAFE'],
-  ['MAY 2023 — APR 2024 · 1 YR','AIRBUS · ROLE 02/03 · EURODRONE'],
-  ['OCT 2022 — MAY 2023 · 8 MOS','AIRBUS · ROLE 01/03 · PROCUREMENT'],
-  ['MAY 2022 — OCT 2022 · 6 MOS','DELOITTE · STELLANTIS C1ST'],
-  ['NOV 2021 — APR 2022 · 6 MOS','EY · MULTI-INDUSTRY R&D']
+  ['APR 2024 — PRESENT · 2 YRS 4 MOS','AIRBUS · GETAFE · MRTT'],
+  ['MAY 2023 — APR 2024 · 1 YR','AIRBUS · GETAFE · EURODRONE'],
+  ['OCT 2022 — MAY 2023 · 8 MOS','AIRBUS · GETAFE · PROCUREMENT & SUPPLY CHAIN'],
+  ['MAY 2022 — OCT 2022 · 6 MOS','DELOITTE · MADRID · STELLANTIS C1ST'],
+  ['NOV 2021 — APR 2022 · 6 MOS','EY · MADRID · MULTI-INDUSTRY R&D']
 ];
 $$('.log-entry').forEach((entry,index)=>{
   const meta=entry.querySelector('.log-meta');
