@@ -6,9 +6,21 @@ function resize(){canvas.width=innerWidth*devicePixelRatio;canvas.height=innerHe
 function draw(){ctx.clearRect(0,0,innerWidth,innerHeight);for(const s of stars){s.y+=s.s;if(s.y>innerHeight)s.y=0;ctx.beginPath();ctx.arc(s.x+mx*.008,s.y+my*.008,s.r,0,Math.PI*2);ctx.fillStyle=`rgba(220,245,245,${s.a})`;ctx.fill()}requestAnimationFrame(draw)}
 addEventListener('resize',resize);addEventListener('pointermove',e=>{mx=e.clientX-innerWidth/2;my=e.clientY-innerHeight/2});resize();draw();
 
-const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible','in-view');if(e.target.classList.contains('log-entry')){$$('.log-entry').forEach(x=>x.classList.remove('active'));e.target.classList.add('active')}}}),{threshold:.18});$$('.reveal,.skill-card').forEach(el=>observer.observe(el));
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible','in-view')}),{threshold:.18});$$('.reveal,.skill-card').forEach(el=>observer.observe(el));
 
-addEventListener('scroll',()=>{const max=document.documentElement.scrollHeight-innerHeight;$('.progress span').style.width=(scrollY/max*100)+'%';const log=$('.flight-log'),line=$('.timeline-line span');if(log){const r=log.getBoundingClientRect(),p=Math.max(0,Math.min(1,(innerHeight*.55-r.top)/r.height));line.style.height=(p*100)+'%'}} ,{passive:true});
+function updateTrajectoryState(){
+  const max=document.documentElement.scrollHeight-innerHeight;
+  $('.progress span').style.width=(scrollY/max*100)+'%';
+  const log=$('.flight-log'),line=$('.timeline-line span'),entries=$$('.log-entry');
+  if(!log)return;
+  const r=log.getBoundingClientRect(),focus=innerHeight*.44,p=Math.max(0,Math.min(1,(focus-r.top)/r.height));
+  line.style.height=(p*100)+'%';
+  let nearest=null,distance=Infinity;
+  entries.forEach(entry=>{const box=entry.getBoundingClientRect(),d=Math.abs(box.top+Math.min(box.height*.38,180)-focus);if(d<distance){distance=d;nearest=entry}});
+  if(nearest&&r.top<innerHeight*.82&&r.bottom>innerHeight*.18)entries.forEach(entry=>entry.classList.toggle('active',entry===nearest));
+}
+addEventListener('scroll',updateTrajectoryState,{passive:true});
+addEventListener('resize',updateTrajectoryState);
 
 $$('.filter').forEach(btn=>btn.addEventListener('click',()=>{
   $$('.filter').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
@@ -49,9 +61,24 @@ const experienceContent=[
 $$('.log-entry').forEach((entry,index)=>{
   const item=experienceContent[index]; if(!item)return;
   entry.querySelector('h3').textContent=item.title;
-  entry.querySelector('.company').textContent=item.company;
-  entry.querySelector('.log-content>p').textContent=item.description;
+  entry.querySelector('.role-description').textContent=item.description;
 });
+
+// Build a seamless full-width index from every capability and role skill already on the page.
+const marqueeSkills=[...new Set([
+  ...$$('.cap-node strong').map(node=>node.textContent.trim()),
+  ...$$('.log-content li').map(item=>item.textContent.trim())
+])];
+const marqueeText=marqueeSkills.join('  ·  ')+'  ·  ';
+const marqueeTrack=$('.tool-marquee-track');
+if(marqueeTrack){
+  const first=document.createElement('span'),second=document.createElement('span');
+  first.textContent=marqueeText;
+  second.textContent=marqueeText;
+  second.setAttribute('aria-hidden','true');
+  marqueeTrack.append(first,second);
+}
+updateTrajectoryState();
 
 const capabilityContext={
   'PM.01':'Budgeting, cost control and business-case development used in Airbus aerospace projects to connect scope, resources and financial impact.',
