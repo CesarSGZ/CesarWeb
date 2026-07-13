@@ -1,0 +1,21 @@
+.log-entry { --company-color: #071015; --company-soft: rgba(7,16,21,.08); padding-bottom: 72px; }
+.log-entry.company-airbus { --company-color: #0066b3; --company-soft: rgba(0,102,179,.10); }
+.log-entry.company-deloitte { --company-color: #477d13; --company-soft: rgba(71,125,19,.11); }
+.log-entry.company-ey { --company-color: #8a6900; --company-soft: rgba(138,105,0,.11); }
+.log-entry::before { border-color: var(--company-color); color: var(--company-color); font-weight: 700; }
+.log-entry .company { display: inline-flex; align-items: center; gap: 9px; color: var(--company-color); font-weight: 700; margin-bottom: 12px; }
+.log-entry .company::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--company-color); box-shadow: 0 0 0 5px var(--company-soft); }
+.log-entry .log-meta span { color: var(--company-color); font-weight: 700; }
+.log-entry .log-meta span { font-size: 9px; white-space: nowrap; }
+.log-content h3 { margin-top: 0; margin-bottom: 18px; line-height: 1.03; }
+.log-content > p { margin-bottom: 20px; }
+.log-content ul { margin-top: 0; margin-bottom: 0; }
+.log-content li { border-color: var(--company-color); background: var(--company-soft); }
+.log-entry.active .log-content { border-left: 3px solid var(--company-color); padding-left: 25px; }
+
+@media (max-width: 700px) {
+  .log-entry { padding-bottom: 55px; }
+  .log-entry.active .log-content { padding-left: 15px; }
+  .log-content h3 { margin-bottom: 14px; }
+  .log-content li { font-size: 9px; padding: 7px 9px; }
+}

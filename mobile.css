@@ -1,0 +1,11 @@
+.hero-copy { position: relative; z-index: 2; }
+
+@media (max-width: 900px) {
+  .identity { display: none; }
+  .identity .id-card,
+  .identity .coordinate { display: none; }
+  .credential-grid { min-width: 0; }
+  .credential { grid-template-columns: 70px minmax(0, 1fr); padding: 24px 18px; gap: 18px; min-width: 0; }
+  .stamp { width: 68px; height: 68px; font-size: 22px; }
+  .credential h3 { font-size: 22px; overflow-wrap: anywhere; }
+}
